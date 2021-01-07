@@ -27,6 +27,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
 
     @NonNull
     @Override
+    //实现模拟机上下滚动
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.place_item, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);

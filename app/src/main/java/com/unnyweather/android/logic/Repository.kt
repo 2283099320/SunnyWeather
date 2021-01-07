@@ -9,16 +9,18 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.coroutineScope
 import kotlin.coroutines.CoroutineContext
-
+//仓库层统一封装入口
 object Repository {
-
+    //返回一个fire对象
     fun searchPlaces(query: String) = fire(Dispatchers.IO) {
         val placeResponse = SunnyWeatherNetwork.searchPlaces(query)
         if (placeResponse.status == "ok") {
             val places = placeResponse.places
             Result.success(places)
+            //用Result.success()方法来包装获取的城市数据列表。
         } else {
             Result.failure(RuntimeException("response status is ${placeResponse.status}"))
+            //用Result.failure()方法来包装一个异常信息。
         }
     }
     fun refreshWeather(lng: String, lat: String, placeName: String) = fire(Dispatchers.IO) {
@@ -54,6 +56,7 @@ object Repository {
                 Result.failure<T>(e)
             }
             emit(result)
+            //使用emit()方法将包装的结果发射出去。
         }
 
 }
