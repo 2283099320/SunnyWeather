@@ -65,6 +65,7 @@ class WeatherActivity : AppCompatActivity() {
         navBtn.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
+
         drawerLayout.addDrawerListener(object : DrawerLayout.DrawerListener {
             override fun onDrawerStateChanged(newState: Int) {}
 
