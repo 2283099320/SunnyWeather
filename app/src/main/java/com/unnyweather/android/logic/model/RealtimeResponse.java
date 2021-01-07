@@ -2,21 +2,21 @@ package com.unnyweather.android.logic.model;
 
 import com.google.gson.annotations.SerializedName;
 
-
+//定义数据模型类
 public class RealtimeResponse {
     public Result result;
     public String status;
 
-    public static  class Result {
-        public  Realtime realtime;
+    public static class Result {
+        public Realtime realtime;
 
     }
 
-    public static  class AirQuality {
+    public static class AirQuality {
         public AQI aqi;
     }
 
-    public static  class AQI {
+    public static class AQI {
         public Float chn;
     }
 

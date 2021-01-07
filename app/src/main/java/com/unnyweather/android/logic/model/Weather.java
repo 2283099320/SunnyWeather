@@ -1,6 +1,7 @@
 package com.unnyweather.android.logic.model;
 
 public class Weather {
+    //封装Realtime和Daily对象
     RealtimeResponse.Realtime realtime;
     DailyResponse.Daily daily;
 

@@ -24,6 +24,8 @@ object Repository {
         }
     }
     fun refreshWeather(lng: String, lat: String, placeName: String) = fire(Dispatchers.IO) {
+        //同时获取到realtimeResponse和dailyResponse后，如果状态OK，那么就将Realtime和Daily对象取出并封装到一个weather对象中
+        //然后使用Result.success()方法来包装这个weather对象，不然就用Result.failuer()方法包装一个异常信息。
         coroutineScope {
             val deferredRealtime = async {
                 SunnyWeatherNetwork.getRealtimeWeather(lng, lat)

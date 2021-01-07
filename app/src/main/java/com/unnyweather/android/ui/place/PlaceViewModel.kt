@@ -3,6 +3,7 @@ package com.unnyweather.android.ui.place
 import androidx.lifecycle.*
 
 import com.unnyweather.android.logic.Repository
+import com.unnyweather.android.logic.dao.PlaceDao
 import com.unnyweather.android.logic.model.Place
 //定义ViewModel层
 class PlaceViewModel : ViewModel() {
@@ -19,7 +20,11 @@ class PlaceViewModel : ViewModel() {
     fun searchPlaces(query: String) {
         searchLiveData.value = query
     }
+    fun savePlace(place: Place)=Repository.savePlace(place)
 
+    fun getSavedPlace() = PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved() = PlaceDao.isPlaceSaved()
 
 
 }
