@@ -2,6 +2,8 @@ package com.unnyweather.android.logic
 
 import androidx.lifecycle.liveData
 import com.sunnyweather.android.logic.network.SunnyWeatherNetwork
+import com.unnyweather.android.logic.dao.PlaceDao
+import com.unnyweather.android.logic.model.Place
 import com.unnyweather.android.logic.model.Weather
 
 
@@ -51,14 +53,18 @@ object Repository {
 
 
     private fun <T> fire(context: CoroutineContext, block: suspend () -> Result<T>) =
-        liveData(context) {
-            val result = try {
-                block()
-            } catch (e: Exception) {
-                Result.failure<T>(e)
-            }
-            emit(result)
+            liveData(context) {
+                val result = try {
+                    block()
+                } catch (e: Exception) {
+                    Result.failure<T>(e)
+                }
+                emit(result)
             //使用emit()方法将包装的结果发射出去。
-        }
+            }
+    fun savePlace(place: Place) = PlaceDao.savePlace(place)
 
+    fun getSavedPlace()= PlaceDao.getSavedPlace()
+
+    fun isPlaceSaved()= PlaceDao.isPlacesSaved()
 }

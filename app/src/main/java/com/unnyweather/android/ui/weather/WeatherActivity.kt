@@ -31,7 +31,9 @@ class WeatherActivity : AppCompatActivity() {
     val viewModel by lazy { ViewModelProviders.of(this).get(WeatherViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
+
         if (Build.VERSION.SDK_INT >= 21) {
             val decorView = window.decorView
             decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE or View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
@@ -71,7 +73,7 @@ class WeatherActivity : AppCompatActivity() {
 
             override fun onDrawerSlide(drawerView: View, slideOffset: Float) {}
 
-            override fun onDrawerOpened(drawerView: View) {}
+            override fun onDrawerOpened(draxwerView: View) {}
 
             override fun onDrawerClosed(drawerView: View) {
                 val manager = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -125,4 +127,7 @@ class WeatherActivity : AppCompatActivity() {
         weatherLayout.visibility = View.VISIBLE
     }
 
+    fun close(){
+        drawerLayout.closeDrawers();
+    }
 }
